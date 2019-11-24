@@ -23,6 +23,10 @@ from bowling.score import Frame
         'frame': '4/X',
         'expected': 20
     },
+    {
+        'frame': 'X4/',
+        'expected': 20
+    },
 ])
 def frames(request):
     yield request.param

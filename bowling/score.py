@@ -63,10 +63,12 @@ class Frame():
 
         elif score_string[0] == 'X':
             partial = 10
+            first_bonus_ball = 0
             if score_string[1].isdigit():
-                partial += int(score_string[1])
+                first_bonus_ball = int(score_string[1])
+                partial += first_bonus_ball
             elif score_string[1] == '-':
-                pass
+                first_bonus_ball = 0
             elif score_string[1] == 'X':
                 partial += 10
 
@@ -74,6 +76,8 @@ class Frame():
                 partial += int(score_string[2])
             elif score_string[2] == '-':
                 pass
+            elif score_string[2] == '/':
+                partial += 10 - first_bonus_ball
             elif score_string[2] == 'X':
                 partial += 10
 
