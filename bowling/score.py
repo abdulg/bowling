@@ -34,7 +34,7 @@ class Frame():
         return len(score_string) == 3
 
     def calculate_frame(self, score_string):
-        self.pins1 = self.convert_pins(score_string)
+        self.pins1 = self.calculate_ball(score_string)
 
         if self.is_strike and self.is_final_frame(score_string):
             return score_string[3:]
@@ -42,14 +42,14 @@ class Frame():
         if self.is_strike:
             return score_string[1:]
 
-        self.pins2 = self.convert_pins(score_string[1:])
+        self.pins2 = self.calculate_ball(score_string[1:])
 
         if self.is_final_frame(score_string):
             return score_string[3:]
 
         return score_string[2:]
 
-    def convert_pins(self, score_string):
+    def calculate_ball(self, score_string):
         if score_string[0].isdigit():
             return int(score_string[0])
 
