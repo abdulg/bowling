@@ -30,6 +30,26 @@ import pytest
         'score': '121212121212121212X45',
         'expected': 46
     },
+    {
+        'score': '121212121212121212XX5',
+        'expected': 52
+    },
+    {
+        'score': '121212121212121212XXX',
+        'expected': 57
+    },
+    {
+        'score': 'XXXXXXXXXXXX',
+        'expected': 300
+    },
+    {
+        'score': '9-9-9-9-9-9-9-9-9-9-',
+        'expected': 90
+    },
+    {
+        'score': '9/9/9/9/9/9/9/9/9/9/9',
+        'expected': 190
+    },
 ])
 def scores_to_test(request):
     yield request.param
