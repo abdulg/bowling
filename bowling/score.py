@@ -25,18 +25,23 @@ class Frame():
     def is_strike(self):
         return self.pins1 > 10
 
-    def final_frame(self, score_string):
+    def is_final_frame(self, score_string):
         return len(score_string) == 3
 
     def calculate_frame(self, score_string):
         self.pins1 = self.convert_pins(score_string)
+
+        if self.is_strike and self.is_final_frame(score_string):
+            return score_string[3:]
+
         if self.is_strike:
             return score_string[1:]
 
         self.pins2 = self.convert_pins(score_string[1:])
 
-        if self.final_frame(score_string):
+        if self.is_final_frame(score_string):
             return score_string[3:]
+
         return score_string[2:]
 
     def convert_pins(self, score_string):

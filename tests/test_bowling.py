@@ -26,6 +26,10 @@ import pytest
         'score': '1212121212121212121/5',
         'expected': 42
     },
+    {
+        'score': '121212121212121212X45',
+        'expected': 46
+    },
 ])
 def scores_to_test(request):
     yield request.param
