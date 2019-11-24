@@ -1,5 +1,4 @@
 def calculate_score(score_string):
-    score = 0
     frames = []
     while len(score_string) > 0:
         frame = Frame()
@@ -56,8 +55,11 @@ class Frame():
             if score_string[1].isdigit():
                 return partial + int(score_string[1])
 
-            if score_string[1] == '-':
+            elif score_string[1] == '-':
                 return partial
+
+            elif score_string[1] == 'X':
+                return partial + 10
 
         elif score_string[0] == 'X':
             partial = 10
