@@ -1,7 +1,14 @@
 def calculate_score(score_string):
     score = 0
-    for pins in score_string:
-        score += convert_pins(pins)
+    frames = []
+    while len(score_string) > 0:
+        frame = Frame()
+        score_string = frame.calculate_frame(score_string)
+        frames.append(frame)
+
+    score = 0
+    for frame in frames:
+        score += frame.score
     return score
 
 
