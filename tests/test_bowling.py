@@ -3,8 +3,12 @@ import pytest
 
 @pytest.fixture(params= [
     {
-        'score': '1111111111',
-        'expected': 10
+        'score': '11111111111111111111',
+        'expected': 20
+    },
+    {
+        'score': '12121212121212121212',
+        'expected': 30
     },
 ])
 def scores_to_test(request):

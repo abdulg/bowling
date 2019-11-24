@@ -1,2 +1,5 @@
 def calculate_score(score_string):
-    return 10
+    score = 0
+    for pins in score_string:
+        score += int(pins)
+    return score
