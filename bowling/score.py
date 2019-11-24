@@ -21,8 +21,15 @@ class Frame():
     def score(self):
         return self.pins1 + self.pins2
 
+    @property
+    def is_strike(self):
+        return self.pins1 > 10
+
     def calculate_frame(self, score_string):
         self.pins1 = self.convert_pins(score_string)
+        if self.is_strike:
+            return score_string[1:]
+
         self.pins2 = self.convert_pins(score_string[1:])
         return score_string[2:]
 
@@ -30,13 +37,31 @@ class Frame():
         if score_string[0].isdigit():
             return int(score_string[0])
 
-        if score_string[0] == '-':
+        elif score_string[0] == '-':
             return 0
 
-        if score_string[0] == '/':
+        elif score_string[0] == '/':
             partial = 10 - self.pins1
             if score_string[1].isdigit():
                 return partial + int(score_string[1])
 
             if score_string[1] == '-':
                 return partial
+
+        elif score_string[0] == 'X':
+            partial = 10
+            if score_string[1].isdigit():
+                partial += int(score_string[1])
+            elif score_string[1] == '-':
+                pass
+            elif score_string[1] == 'X':
+                partial += 10
+
+            if score_string[2].isdigit():
+                partial += int(score_string[2])
+            elif score_string[2] == '-':
+                pass
+            elif score_string[2] == 'X':
+                partial += 10
+
+            return partial
